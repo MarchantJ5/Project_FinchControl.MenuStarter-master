@@ -222,7 +222,7 @@ namespace MarchantFinchMission3
                 }
                 else
                 {
-                    Console.WriteLine("Please enter which sensors you are using [left, right, both].");
+                    Console.WriteLine("Please enter motor speed.");
                 }
             } while (!validResponse);
 
@@ -241,7 +241,7 @@ namespace MarchantFinchMission3
                 }
                 else
                 {
-                    Console.WriteLine("Please enter which sensors you are using [left, right, both].");
+                    Console.WriteLine("Please enter LED brightness.");
                 }
             } while (!validResponse2);
 
@@ -259,7 +259,7 @@ namespace MarchantFinchMission3
                 }
                 else
                 {
-                    Console.WriteLine("Please enter which sensors you are using [left, right, both].");
+                    Console.WriteLine("Please enter wait time.");
                 }
             } while (!validResponse3);
 
@@ -519,7 +519,7 @@ namespace MarchantFinchMission3
 
         static int AlarmSystemDisplaySetMinMaxThresholdTemperature(Finch finchRobot, string rangeTypeTemperature)
         {
-            int minMaxThresholdValueThreshold = 0;
+            int minMaxThresholdValueThresholdTemperature = 0;
             bool validResponse = false;
 
             DisplayScreenHeader("Min/Max Threshold Value");
@@ -534,8 +534,8 @@ namespace MarchantFinchMission3
             //
             do
             {
-                minMaxThresholdValueThreshold = Convert.ToInt32(Console.ReadLine());
-                if (minMaxThresholdValueThreshold > 0)
+                int.TryParse(Console.ReadLine(), out minMaxThresholdValueThresholdTemperature);
+                if (minMaxThresholdValueThresholdTemperature > 0)
                 {
                     validResponse = true;
                 }
@@ -545,11 +545,11 @@ namespace MarchantFinchMission3
                 }
             } while (!validResponse);
 
-            Console.WriteLine($"Minimum/Maximum value {minMaxThresholdValueThreshold}.");
+            Console.WriteLine($"Minimum/Maximum value {minMaxThresholdValueThresholdTemperature}.");
 
             DisplayContinuePrompt();
 
-            return minMaxThresholdValueThreshold;
+            return minMaxThresholdValueThresholdTemperature;
         }
 
         static bool AlarmSystemDisplayTemperatureSelect()
@@ -662,7 +662,7 @@ namespace MarchantFinchMission3
             //
             do
             {
-                minMaxThresholdValue = Convert.ToInt32(Console.ReadLine());
+                int.TryParse(Console.ReadLine(), out minMaxThresholdValue);
                 if (minMaxThresholdValue > 0)
                 {
                     validResponse = true;
